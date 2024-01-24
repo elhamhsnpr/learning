@@ -38,4 +38,25 @@ describe('BinarySearchService', () => {
 
   })
 
+  describe('binarySearchRecursive', () => {
+
+    it('Should find the element in the array and return the index', () => {
+
+      const sortedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const targetValue = 4;
+
+      const result = service.binarySearchRecursive(sortedArray, targetValue, 0, sortedArray.length - 1);
+      expect(result).toBe(3);
+    })
+
+    it('should return -1 if the element is not found in the array', () => {
+      const sortedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const targetValue = 20;
+
+      const result = service.binarySearchRecursive(sortedArray, targetValue, 0, sortedArray.length - 1);
+      expect(result).toBe(-1);
+    });
+
+  })
+
 });
