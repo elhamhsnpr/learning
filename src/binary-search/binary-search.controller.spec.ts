@@ -25,7 +25,7 @@ describe('BinarySearchController', () => {
     it('should return the result of binary search from the service', () => {
       const sortedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
       const targetValue = 7;
-      const expectedResult = 'Element found at index 6';
+      const expectedResult = 'Iterative binary search: Element found at index 6';
 
       jest.spyOn(service, 'binarySearch').mockReturnValue(6);
 
@@ -36,20 +36,23 @@ describe('BinarySearchController', () => {
 
     });
 
-    // it('should handle the case when the element is not found in the array', () => {
-    //   const sortedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    //   const targetValue = 20;
-    //   const expectedResult = 'Element not found in the array';
+  });
 
-    //   // Mock the binarySearch method of the service
-    //   jest.spyOn(service, 'binarySearch').mockReturnValue(-1);
+  describe('performBinarySearchRecursive', () => {
+    it('should return the result of binary search from the service', () => {
+      const sortedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const targetValue = 4;
+      const expectedResult = 'Recursive binary search: Element found at index 3';
 
-    //   // Call the controller method
-    //   const result = controller.performBinarySearch();
+      jest.spyOn(service, 'binarySearchRecursive').mockReturnValue(3);
 
-    //   expect(result).toBe(expectedResult);
-    //   expect(service.binarySearch).toHaveBeenCalledWith(sortedArray, targetValue);
-    // });
+      const result = controller.performBinarySearchRecursive();
+
+      expect(result).toBe(expectedResult);
+      expect(service.binarySearchRecursive).toHaveBeenCalledWith(sortedArray, targetValue, 0, sortedArray.length - 1);
+
+    });
+
   });
 
 
