@@ -2,17 +2,33 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { LinkedListService } from './linked_list.service';
 
 describe('LinkedListService', () => {
-  let service: LinkedListService;
+  let Service: LinkedListService<number>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [LinkedListService],
     }).compile();
 
-    service = module.get<LinkedListService>(LinkedListService);
+    Service = module.get<LinkedListService<number>>(LinkedListService);
   });
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(Service).toBeDefined();
   });
+
+  describe('add', () => {
+
+    it('should add element to the linked list', () => {
+
+      Service.add(1);
+      Service.add(2);
+
+      const list= Service.getAll();
+      expect(list).toEqual([1,2]);
+    })
+
+  })
+
+
+
 });
