@@ -23,10 +23,30 @@ describe('LinkedListService', () => {
       Service.add(1);
       Service.add(2);
 
-      const list= Service.getAll();
-      expect(list).toEqual([1,2]);
+      const list = Service.getAll();
+      expect(list).toEqual([1, 2]);
     })
 
+  })
+
+  describe('search', () => {
+    it('should return true if the element exists in the linked list', () => {
+
+      Service.add(12);
+
+      const result = Service.search(12);
+      expect(result).toEqual(true);
+    })
+  })
+
+  describe('search', () => {
+    it('should return false if the element does not exists in the linked list', () => {
+
+      Service.add(12);
+
+      const result = Service.search(15);
+      expect(result).toEqual(false);
+    })
   })
 
 
