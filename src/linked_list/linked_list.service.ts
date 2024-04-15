@@ -6,7 +6,7 @@ export class LinkedListService<T> {
 
     private head: Node<T> | null = null;
 
-    add(data: T): void {
+    add(data: T): T[] {
         const newNode = new Node(data);
 
         if (!this.head) {
@@ -18,6 +18,7 @@ export class LinkedListService<T> {
             }
             current.next = newNode;
         }
+        return this.getAll();
     }
 
     getAll(): T[] {
@@ -32,6 +33,42 @@ export class LinkedListService<T> {
         return result;
     }
 
+    search(data: T): boolean {
+        let current = this.head;
 
+        while (current) {
+            if (current.data == data) {
+                return true;
+            }
+            current = current.next;
+        }
 
+        return false;
+
+    }
+
+    remove(data: T): T[] {
+        let current = this.head;
+        let prev: Node<T> | null = null;
+
+        while (current) {
+
+            if (current.data == data) {
+                if (prev === null) {
+                    this.head = current.next;
+                } else {
+                    prev.next = current.next
+                }
+            }
+
+            return this.getAll();;
+
+        }
+        prev = current;
+        current = current.next;
+    }
 }
+
+
+
+

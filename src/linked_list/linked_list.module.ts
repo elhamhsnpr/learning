@@ -4,6 +4,6 @@ import { LinkedListService } from './linked_list.service';
 
 @Module({
     controllers: [LinkedListController],
-    providers: [LinkedListService],
+    providers: [LinkedListService]
 })
 export class LinkedListModule { }
