@@ -49,6 +49,19 @@ describe('LinkedListService', () => {
     })
   })
 
+  describe('remove', () => {
+    it('should remove an item from the linnked list', () => {
+
+      Service.add(12);
+      Service.add(15);
+
+      Service.remove(12);
+      const list = Service.getAll();
+      expect(list).toEqual([15]);
+    })
+
+  })
+
 
 
 });
