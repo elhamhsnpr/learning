@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, Delete } from '@nestjs/common';
 import { LinkedListService } from './linked_list.service';
 
 @Controller('linked-list')
@@ -20,6 +20,12 @@ export class LinkedListController {
     @Get('search/:data')
     searchElement(@Param('data') data: number): boolean {
         return this.linkedListService.search(data);
+    }
+
+    @Delete('remove/:data')
+    removeElement(@Param('data') data: number): number[] {
+        return this.linkedListService.remove(data);
+
     }
 
 

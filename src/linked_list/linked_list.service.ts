@@ -46,6 +46,27 @@ export class LinkedListService<T> {
         return false;
 
     }
+
+    remove(data: T): T[] {
+        let current = this.head;
+        let prev: Node<T> | null = null;
+
+        while (current) {
+
+            if (current.data == data) {
+                if (prev === null) {
+                    this.head = current.next;
+                } else {
+                    prev.next = current.next
+                }
+            }
+
+            return this.getAll();;
+
+        }
+        prev = current;
+        current = current.next;
+    }
 }
 
 
