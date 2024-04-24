@@ -1,4 +1,9 @@
 import { Module } from '@nestjs/common';
+import { MergeSortController } from './merge_sort.controller';
+import { MergeSortService } from './merge_sort.service';
 
-@Module({})
-export class MergeSortModule {}
+@Module({
+    controllers: [MergeSortController],
+    providers: [MergeSortService],
+})
+export class MergeSortModule { }
